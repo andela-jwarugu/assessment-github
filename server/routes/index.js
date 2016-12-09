@@ -1,5 +1,5 @@
+const members = require('../controller/members');
+
 module.exports = function(app) {
-  app.get('/', function(req, res) {
-    res.send('Hey');
-  })
+  app.get('/api/members', members.fetch)
 }
