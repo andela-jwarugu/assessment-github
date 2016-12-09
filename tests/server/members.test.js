@@ -7,7 +7,6 @@ describe('fetching members controller', () => {
     request
       .get('/api/members')
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(200);
         expect(res.body).to.exist;
         expect(Array.isArray(res.body)).to.be.true;
@@ -20,11 +19,16 @@ describe('fetching members controller', () => {
     request
       .get('/api/members/andela-jwarugu')
       .end((err, res) => {
+        console.log(res.body);
         expect(res.status).to.equal(200);
         expect(res.body).to.exist;
         expect(res.body).to.be.an.object;
-        expect(res.body).to.have.keys('name', 'followers', 'following', 'repos');
-        expect(res.body.name).to.equal('andela-jwarugu');
+        expect(res.body.name).to.exist;
+        expect(res.body.followers).to.exist;
+        expect(res.body.following).to.exist;
+        expect(res.body.repos).to.exist;
+        // expect(res.body).to.have.keys('name', 'followers', 'following', 'repos');
+        expect(res.body.login).to.equal('andela-jwarugu');
         done();
       })
   })
