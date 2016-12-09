@@ -7,11 +7,11 @@ import React from 'react';
 describe('<App />', () => {
   it('has initial state', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state().members).to.equal([]);
+    expect(wrapper.state().members).to.eql([]);
   })
 
   it('calls componentDidMount once', () => {
-    sinon.spy(App.prototype, componentDidMount);
+    sinon.spy(App.prototype, 'componentDidMount');
     const wrapper = mount(<App />);
     expect(App.prototype.componentDidMount.calledOnce).to.be.true;
   })
